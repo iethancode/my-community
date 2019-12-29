@@ -9,3 +9,10 @@ body{
     margin-bottom: 30px;
     float: right;
 }
+.error{
+    text-align: center;
+}
+
+.d_btn{
+    text-align: center;
+}
