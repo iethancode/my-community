@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>发布-树洞君论坛</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script type="application/javascript" src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">树洞君论坛</span>
+            </button>
+            <a class="navbar-brand" href="#">树洞君论坛</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索话题">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <!--判断是否登录显示不同-->
+                <li th:if="${session.user==null}"><a href="https://github.com/login/oauth/authorize?client_id=1b1193c517af1c89a78a&redirect_uri=http://localhost:8888/callback&scope=user&state=1">
+                    登录</a></li>
+
+                <li class="dropdown" th:if="${session.user!=null}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                    th:text="${session.user.getName()}"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">消息中心</a></li>
+                        <li><a href="#">个人资料</a></li>
+                        <li><a href="#">注销登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--发布-->
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <form>
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）：</label>
+                    <input type="text" class="form-control" id="title"   name="title" placeholder="问题标题...">
+                </div>
+
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）：</label>
+                    <textarea id="description"  name="description" class="form-control" rows="10" cols="30"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tag">添加标签：</label>
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签，以，分隔">
+                </div>
+
+                <button type="button" class="btn btn-success publish">发布</button>
+              </form>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" >
+                <h3>问题发起指南</h3>
+                <h4>问题标题：精简发布标题，不超过25个字</h4>
+                <h4>问题补充：详细补充问题内容，并确保问题描述清晰</h4>
+                <h4>选择标签：选择一个或多个标签，用逗号隔开，每个标签不超过10个字</h4>
+        </div>
+    </div>
+</div>
+</body>
+</html>
