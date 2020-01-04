@@ -1,9 +1,10 @@
-package xyz.peypey.community.model;
+package xyz.peypey.community.dto;
 
 import lombok.Data;
+import xyz.peypey.community.model.User;
 
 @Data
-public class Question {
+public class QuestionDTO {
     private Integer id;
     private String title;
     private String description;
@@ -13,6 +14,7 @@ public class Question {
     private Integer commentCount;
     private Integer  viewCount;
     private Integer  likeCount;
-    private  String tag;
+    private String tag;
+    private User user;
 
 }
